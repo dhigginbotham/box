@@ -1,0 +1,32 @@
+extends ../layout
+
+block content
+  .page-header
+    h1 View all users 
+
+  table.table.table-striped
+    thead
+      tr
+        th #
+        th Username
+        th Name
+        th Email
+        th Admin
+        th Last Login
+        th Logins
+        th
+    tbody
+      for col, index in collection
+        tr
+          th=index + 1
+          td
+            a(href="/users/#{col._id}") #{col.username}
+          td #{col.first_name + " " + col.last_name}
+          td=col.email
+          td=col.admin
+          td #{moment(col.last_login[col.last_login.length - 1]).fromNow()}
+          td=col.login_count
+          td
+            .btn-group
+              a.btn.btn-xs.btn-primary(href="/users/#{col._id}") Edit
+              a.btn.btn-xs.btn-danger(href="/users/remove/#{col._id}") Remove
