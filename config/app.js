@@ -17,6 +17,7 @@ app.env = getEnv();
 app.secret = 'thisIsntAGoodPlaceForThisKindOfThingKeepThisStuffInEnvVarsMaybe';
 
 app.templateDir = path.join(__dirname, '..', 'views');
+
 app.viewEngine = 'jade';
 
 module.exports = app;

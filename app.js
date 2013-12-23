@@ -2,15 +2,14 @@ var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
 var cfg = require('./config');
+var passport = require('passport');
+
+
 
 // express app settings
 app.set('port', cfg.app.port);
 app.set('x-powered-by', false);
 app.use(express.json());
-
-
-// modules
-var passport = require('passport');
 
 
 
@@ -24,6 +23,7 @@ if (app.get('env') == 'development') {
 };
 
 
+
 // app specific global middleware
 app.use(express.cookieParser());
 app.use(require('./library/flash'));
@@ -34,6 +34,9 @@ app.use(passport.session());
 
 // mount express subapps
 app.use(require('./routes/main'));
+
+
+
 
 // alternatively, you can use app.listen(port)
 // however it is helpful to have access to your
