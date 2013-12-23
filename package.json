@@ -1,0 +1,34 @@
+{
+  "name": "box",
+  "version": "0.0.1",
+  "description": "express app boxx",
+  "main": "app.js",
+  "scripts": {
+    "test": "moch test -R spec -t 4000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dhigginbotham/box"
+  },
+  "keywords": [
+    "boilerplate"
+  ],
+  "author": "dhigginbotham",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dhigginbotham/box/issues"
+  },
+  "dependencies": {
+    "express": "~3.4.7",
+    "mongoose": "~3.8.3",
+    "ms": "~0.6.2",
+    "lru-cache": "~2.5.0",
+    "lodash": "~2.4.1",
+    "moment": "~2.4.0",
+    "passport-local": "~0.1.6",
+    "passport": "~0.1.17",
+    "bcrypt": "~0.7.7",
+    "jade": "~1.0.0",
+    "batchman": "git+https://github.com/dhigginbotham/batchman"
+  }
+}
