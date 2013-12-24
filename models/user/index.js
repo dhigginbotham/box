@@ -1,12 +1,13 @@
 var db = require('../db');
 var Schema = require('mongoose').Schema;
 var ObjectId = Schema.Types.ObjectId;
+var cfg = require('../../config/db');
 
 var bcrypt = require('bcrypt');
 var SALT_WORK_FACTOR = 10; // keep this in mind, it's hardcoded to not be played with much.
 
 // schema, edit as you need
-var User = new Schema({
+var UserSchema = new Schema({
   first_name: String,
   last_name: String,
   email: String,
@@ -14,14 +15,14 @@ var User = new Schema({
   password: String,
   admin: Boolean,
   editor: Boolean,
-  updated_date: [type: Date, default: Date.now],
-  created_date: type: Date, default: Date.now,
-  last_login: [type: Date, default: Date.now],
+  updated_date: [{type: Date, default: Date.now}],
+  created_date: {type: Date, default: Date.now},
+  last_login: [{type: Date, default: Date.now}],
   ip: String
 });
 
 // mainly auth stuff, but you can add in as you need
-User.pre('save', function (next) {
+UserSchema.pre('save', function (next) {
   var user = this;
   if (!user.isModified('password')) {
     return next();
@@ -37,11 +38,11 @@ User.pre('save', function (next) {
   };
 });
 
-User.methods.comparePassword = (candidatePass, next) {
+UserSchema.methods.comparePassword = function (candidatePass, next) {
   bcrypt.compare(candidatePass, this.password, function (err, isMatch) {
     if (err) return next(err);
     return next(null, isMatch);
   });
 };
 
-var user = module.exports = db.model('User', User);
+var User = module.exports = db.model('User', UserSchema);

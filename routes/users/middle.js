@@ -8,3 +8,5 @@ middle.collection = function (req, res, next) {
     return next(null, arr);
   });
 };
+
+module.exports = middle;

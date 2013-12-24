@@ -34,7 +34,7 @@ app.use(passport.session());
 
 // mount express subapps
 app.use(require('./routes/main'));
-
+app.use(require('./routes/users'));
 
 
 
