@@ -36,8 +36,8 @@ app.post('/login', function (req, res, next) {
         if (err) return next(err, null);
         return res.redirect('/');
       });
-    })(req, res, next);
-  });
+    };
+  })(req, res, next);
 });
 
 app.get('/logout', function (req, res) {

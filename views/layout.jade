@@ -18,8 +18,8 @@ html(lang="en")
     meta(name="viewport", content="width=device-width")
     meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
     meta(name='viewport', content='width=device-width,initial-scale=1')
-    script(src='//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js')
     block header
+      script(src='//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js')
       link(rel="stylesheet", type="text/css", href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css")
           
   body
@@ -29,8 +29,10 @@ html(lang="en")
         p=flash
     
     block content
-    footer.clearfix
 
+    footer.clearfix
+      p.pull-right.text-primary Powered by express, mongoose, and other things
+    
     block footer
       script(type="text/javascript", src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js")
       script(type="text/javascript", src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js")

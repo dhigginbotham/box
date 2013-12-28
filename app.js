@@ -7,9 +7,19 @@ var passport = require('passport');
 
 
 // express app settings
+app.set('name', cfg.app.name);
 app.set('port', cfg.app.port);
 app.set('x-powered-by', false);
+app.use(express.compress());
 app.use(express.json());
+
+
+
+// static dirs
+app.use(express.static(cfg.app.img));
+app.use(express.static(cfg.app.js));
+app.use(express.static(cfg.app.css));
+app.use(express.static(cfg.app.uploads));
 
 
 
@@ -43,5 +53,5 @@ app.use(require('./routes/users'));
 // server later on.
 server.listen(app.get('port'), function (err) {
   if (err) return console.log(err);
-  return console.log('box connected on %d', app.get('port'));
+  return console.log('%s connected on %d', app.get('name'), app.get('port'));
 });

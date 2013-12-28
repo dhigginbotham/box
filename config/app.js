@@ -9,7 +9,7 @@ var app = {};
 // as possible.
 
 app.port = 1400;
-app.title = 'box - ';
+app.name = 'box';
 app.env = getEnv();
 app.key = 'box.sid';
 app.secret = 'thisIsntAGoodPlaceForThisKindOfThingKeepThisStuffInEnvVarsMaybe';
@@ -19,8 +19,9 @@ app.templateDir = path.join(__dirname, '..', 'views');
 app.viewEngine = 'jade';
 
 // asset paths
-app.images = path.join(__dirname, '..', 'public', 'img');
-app.javascript = path.join(__dirname, '..', 'public', 'src');
-app.uploads = path.join(__dirname, '..', 'public', 'uploads');
+app.img = path.join(__dirname, '..', 'assets', 'img');
+app.js = path.join(__dirname, '..', 'assets', 'src');
+app.css = path.join(__dirname, '..', 'assets', 'src');
+app.uploads = path.join(__dirname, '..', 'assets', 'uploads');
 
 module.exports = app;
