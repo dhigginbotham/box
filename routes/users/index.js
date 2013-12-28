@@ -20,3 +20,27 @@ app.get(prefix, middle.collection, function (req, res) {
     moment: moment
   });
 });
+
+app.get('/login', function (req, res) {
+  return res.render('users/login');
+});
+
+app.post('/login', function (req, res, next) {
+  passport.authenticate('local', function (err, user, info) {
+    if (err) return next(err, null);
+    if (!user) {
+      req.session.messages = [info.message];
+      return res.redirect('back');
+    } else {
+      req.logIn(user, function (err) {
+        if (err) return next(err, null);
+        return res.redirect('/');
+      });
+    })(req, res, next);
+  });
+});
+
+app.get('/logout', function (req, res) {
+  req.logout();
+  return res.redirect('/login');
+});
