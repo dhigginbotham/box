@@ -1,5 +1,5 @@
 var passport = require('passport');
-var Local = require('passport-local').Strategy;
+var LocalStrategy = require('passport-local').Strategy;
 var User = require('../../models/user');
 
 // push the user._id to the session, this happens
@@ -17,7 +17,9 @@ passport.deserializeUser(function (id, done) {
 });
 
 // initialize passport `local` strategy
-passport.use(new Local(username, password, done) {
+passport.use(new LocalStrategy(function (username, password, done) {
+
+  console.log(username);
 
   var username = username.trim(); //kill spaces
 
@@ -52,4 +54,4 @@ passport.use(new Local(username, password, done) {
 
   });
 
-});
+}));

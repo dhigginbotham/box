@@ -1,0 +1,19 @@
+extends ../layout
+
+block content
+  .row
+    .col-lg-4
+    .col-lg-4.well
+      if (flash)
+        .alert.alert-danger
+          h3 Heads up!
+          p #{flash}
+      form(role="form", method="post")
+        .form-group
+          label(for="username") Username
+          input(type="text", class="form-control", id="username", name="username", placeholder="username")
+        .form-group
+          label(for="password") Password
+          input(type="password", class="form-control", id="password", name="password", placeholder="password")
+        button.btn.btn-primary(type="submit") Login
+    .col-lg-4

@@ -23,10 +23,7 @@ html(lang="en")
       link(rel="stylesheet", type="text/css", href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css")
           
   body
-  .container.clearfix
-    if (flash)
-      .alert.alert-info
-        p=flash
+  .container(style="margin-top: 40px;")
     
     block content
 

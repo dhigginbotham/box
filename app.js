@@ -4,16 +4,16 @@ var server = require('http').createServer(app);
 var cfg = require('./config');
 var passport = require('passport');
 
-
-
 // express app settings
 app.set('name', cfg.app.name);
 app.set('port', cfg.app.port);
 app.set('x-powered-by', false);
 app.use(express.compress());
 app.use(express.json());
-
-
+app.use(express.multipart({defer: true}));
+app.use(express.cookieParser());
+app.use(express.session({ secret: cfg.app.secret }));
+app.use(require('./library/flash'));
 
 // static dirs
 app.use(express.static(cfg.app.img));
@@ -35,8 +35,6 @@ if (app.get('env') == 'development') {
 
 
 // app specific global middleware
-app.use(express.cookieParser());
-app.use(require('./library/flash'));
 app.use(passport.initialize());
 app.use(passport.session());
 

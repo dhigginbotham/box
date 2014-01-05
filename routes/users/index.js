@@ -3,6 +3,9 @@ var app = module.exports = express();
 var cfg = require('../../config/app');
 var moment = require('moment');
 
+var passport = require('passport');
+var local = require('../../library/passport/local');
+
 app.set('views', cfg.templateDir);
 app.set('view engine', cfg.viewEngine);
 
